@@ -1,1 +1,553 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dakota Wright's Pet Collars - Handmade in Corydon, Indiana</title>
+    <style>
+        :root {
+            --primary-color: #ff69b4;
+            --secondary-color: #66c2ff;
+            --accent-color: #ffffff;
+            --dark-color: #333333;
+            --light-color: #f9f9f9;
+            --border-radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+        }
+        
+        nav ul li a:hover {
+            color: var(--dark-color);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        .products {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .dog-collar-small {
+            background-image: url("/api/placeholder/250/200");
+        }
+        
+        .dog-collar-medium {
+            background-image: url("/api/placeholder/250/200");
+        }
+        
+        .dog-collar-large {
+            background-image: url("/api/placeholder/250/200");
+        }
+        
+        .cat-collar {
+            background-image: url("/api/placeholder/250/200");
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .color-options {
+            display: flex;
+            margin-top: 10px;
+        }
+        
+        .color-option {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .pink {
+            background-color: var(--primary-color);
+        }
+        
+        .blue {
+            background-color: var(--secondary-color);
+        }
+        
+        .purple {
+            background-color: #8a2be2;
+        }
+        
+        .about {
+            padding: 40px 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background: url("/api/placeholder/600/400");
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--border-radius);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .contact {
+            padding: 40px 0;
+            background-color: white;
+            border-radius: var(--border-radius);
+            margin: 40px 0;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+        }
+        
+        .form-textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .form-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .form-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Dakota's <span>Pet Collars</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Handmade Pet Collars</h1>
+            <p>Beautifully crafted dog and cat collars made with love in Corydon, Indiana. Quality materials, stylish designs, perfect for your furry friends.</p>
+            <a href="#products" class="btn">View Collections</a>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Our Collections</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image dog-collar-small"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Small Dog Collar</h3>
+                        <p class="product-description">Perfect for small breeds like Chihuahuas, Yorkies, and Pomeranians.</p>
+                        <div class="product-price">$XX.XX</div>
+                        <div class="color-options">
+                            <div class="color-option pink" title="Pink"></div>
+                            <div class="color-option blue" title="Blue"></div>
+                            <div class="color-option purple" title="Purple"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image dog-collar-medium"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Medium Dog Collar</h3>
+                        <p class="product-description">Ideal for medium-sized breeds like Beagles, Bulldogs, and Cocker Spaniels.</p>
+                        <div class="product-price">$XX.XX</div>
+                        <div class="color-options">
+                            <div class="color-option pink" title="Pink"></div>
+                            <div class="color-option blue" title="Blue"></div>
+                            <div class="color-option purple" title="Purple"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image dog-collar-large"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Large Dog Collar</h3>
+                        <p class="product-description">Strong and durable for larger breeds like Retrievers, German Shepherds, and Labradors.</p>
+                        <div class="product-price">$XX.XX</div>
+                        <div class="color-options">
+                            <div class="color-option pink" title="Pink"></div>
+                            <div class="color-option blue" title="Blue"></div>
+                            <div class="color-option purple" title="Purple"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image cat-collar"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cat Collar</h3>
+                        <p class="product-description">Comfortable and stylish collars designed specifically for cats.</p>
+                        <div class="product-price">$XX.XX</div>
+                        <div class="color-options">
+                            <div class="color-option pink" title="Pink"></div>
+                            <div class="color-option blue" title="Blue"></div>
+                            <div class="color-option purple" title="Purple"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <p>Custom colors available upon request. Contact Dakota for more information!</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Dakota</h2>
+            <div class="about-content">
+                <div class="about-image"></div>
+                <div class="about-text">
+                    <h3>Handcrafted with Love in Corydon, Indiana</h3>
+                    <p>Hi there! I'm Dakota Wright, and I'm passionate about creating beautiful, high-quality collars for your beloved pets.</p>
+                    <p>Each collar is handcrafted with careful attention to detail, using only the best materials to ensure comfort and durability for your furry friends.</p>
+                    <p>What started as a hobby making collars for my own pets quickly grew into a small business as friends and family began requesting custom pieces. Now, I'm proud to offer my handmade pet collars to pet lovers throughout Corydon and beyond.</p>
+                    <p>Most of my customers are local, but I'm happy to ship nationwide for those who fall in love with my designs from afar!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" class="form-textarea" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Dakota's Pet Collars</h3>
+                    <p>Handmade with love in Corydon, Indiana.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Corydon, Indiana</li>
+                        <li>Email: dakota@example.com</li>
+                        <li>Phone: (XXX) XXX-XXXX</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dakota's Pet Collars. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
