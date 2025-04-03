@@ -25,19 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-    
-    themeToggle.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
-        
-        if (document.body.classList.contains('dark-mode')) {
-            themeIcon.textContent = '☀️';
-        } else {
-            themeIcon.textContent = '🌙';
-        }
-    });
-    
     items.forEach(item => {
         item.style.opacity = '0';
         item.style.transition = 'opacity 0.3s ease';
