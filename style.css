@@ -268,7 +268,7 @@ nav ul li a:hover {
 .about-image {
     flex: 1;
     height: 400px;
-    background: url("/images/IMG_4995.jpeg");
+    background: url("images/IMG_4995.jpeg");
     background-size: cover;
     background-position: center;
     border-radius: var(--border-radius);
