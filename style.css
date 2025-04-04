@@ -188,15 +188,15 @@ nav ul li a:hover {
 }
 
 .dog-collar-small {
-    background-image: url("/api/placeholder/250/200");
+    background-image: url("images/IMG_4996.jpeg");
 }
 
 .dog-collar-medium {
-    background-image: url("/api/placeholder/250/200");
+    background-image: url("images/IMG_4994.jpeg");
 }
 
 .dog-collar-large {
-    background-image: url("/api/placeholder/250/200");
+    background-image: url("images/2IMG_4974.jpeg");
 }
 
 .cat-collar {
