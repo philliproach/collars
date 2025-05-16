@@ -16,7 +16,6 @@
         
         @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
         
-        /** Variables **/
         :root {
             --color-background: #e7e7e7;
             --color-background-alt: #bdb4fe;
@@ -31,7 +30,6 @@
             --font-family-display: "Poppins", system-ui, sans-serif;
         }
         
-        /** Base **/
         *,
         ::before,
         ::after {
@@ -157,7 +155,6 @@
             margin: 0 auto 30px;
         }
         
-        /** Form Styles **/
         .fs-form {
             background: white;
             border-radius: var(--border-radius);
@@ -359,14 +356,12 @@
             </nav>
         </div>
     </header>
-    
     <section class="hero" id="home">
         <div class="container">
             <h1>Order</h1>
             <p>Beautifully crafted dog and cat collars made with love in Indiana. Quality materials, stylish designs, perfect for your furry friends.</p>
         </div>
     </section>
-    
     <div class="container">
         <form
             action="https://formspree.io/f/{FORM_ID}"
@@ -375,7 +370,6 @@
             method="POST"
         >
             <h2>Pet Collar Order Form</h2>
-            
             <fieldset>
                 <legend>Customer Information</legend>
                 <div class="fs-field">
@@ -409,7 +403,6 @@
                     />
                 </div>
             </fieldset>
-            
             <fieldset>
                 <legend>Collar Information</legend>
                 <div class="fs-field">
@@ -425,8 +418,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Cat Collar Color Selection -->
                 <div class="fs-field conditional-field cat-field" id="cat-color-field">
                     <label class="fs-label" for="cat-collar-color">Cat Collar Color</label>
                     <select class="fs-select" id="cat-collar-color" name="cat-collar-color">
@@ -434,8 +425,6 @@
                         <option value="red">Red</option>
                     </select>
                 </div>
-                
-                <!-- Dog Collar Options -->
                 <div class="fs-field conditional-field dog-field" id="dog-color-field">
                     <label class="fs-label" for="dog-collar-color">Dog Collar Color</label>
                     <select class="fs-select" id="dog-collar-color" name="dog-collar-color">
@@ -443,7 +432,6 @@
                         <option value="red">Red</option>
                     </select>
                 </div>
-                
                 <div class="fs-field conditional-field dog-field" id="dog-size-field">
                     <label class="fs-label" for="dog-collar-size">Dog Collar Size</label>
                     <select class="fs-select" id="dog-collar-size" name="dog-collar-size">
@@ -454,9 +442,8 @@
                     </select>
                 </div>
             </fieldset>
-            
             <fieldset>
-                <legend>Additional Information</legend>
+                <legend>Additional Information / custom orders</legend>
                 <div class="fs-field">
                     <label class="fs-label" for="special-instructions">Special Instructions</label>
                     <textarea
@@ -467,13 +454,11 @@
                     ></textarea>
                 </div>
             </fieldset>
-            
             <div class="fs-button-group">
                 <button class="fs-button" type="submit">Place Order</button>
             </div>
         </form>
     </div>
-    
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -506,14 +491,12 @@
     </footer>
 
     <script>
-        // Show/hide fields based on collar type selection
         document.addEventListener('DOMContentLoaded', function() {
             const catRadio = document.getElementById('cat-collar');
             const dogRadio = document.getElementById('dog-collar');
             const catFields = document.querySelectorAll('.cat-field');
             const dogFields = document.querySelectorAll('.dog-field');
             
-            // Function to toggle visibility
             function updateFieldVisibility() {
                 if (catRadio.checked) {
                     catFields.forEach(field => field.style.display = 'block');
@@ -524,10 +507,8 @@
                 }
             }
             
-            // Set initial state
             updateFieldVisibility();
             
-            // Add event listeners
             catRadio.addEventListener('change', updateFieldVisibility);
             dogRadio.addEventListener('change', updateFieldVisibility);
         });
