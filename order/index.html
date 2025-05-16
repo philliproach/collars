@@ -27,7 +27,155 @@
     </section>
 
 
-
+    <form
+        action="https://formspree.io/f/{FORM_ID}"
+        class="fs-form"
+        target="_top"
+        method="POST"
+    >
+        <h2>Pet Collar Order Form</h2>
+        
+        <fieldset>
+            <legend>Customer Information</legend>
+            <div class="fs-field">
+                <label class="fs-label" for="customer-name">Full Name</label>
+                <input
+                    class="fs-input"
+                    id="customer-name"
+                    name="customer-name"
+                    placeholder="Enter your full name"
+                    required
+                />
+            </div>
+            <div class="fs-field">
+                <label class="fs-label" for="customer-address">Address</label>
+                <textarea
+                    class="fs-textarea"
+                    id="customer-address"
+                    name="customer-address"
+                    placeholder="Enter your address"
+                    required
+                ></textarea>
+            </div>
+            <div class="fs-field">
+                <label class="fs-label" for="customer-phone">Phone Number</label>
+                <input
+                    class="fs-input"
+                    id="customer-phone"
+                    name="customer-phone"
+                    placeholder="Enter your phone number"
+                    required
+                />
+            </div>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Collar Information</legend>
+            <div class="fs-field">
+                <label class="fs-label">Select Pet Type</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="cat-collar" name="collar-type" value="cat" required checked>
+                        <label for="cat-collar">Cat Collar</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="dog-collar" name="collar-type" value="dog">
+                        <label for="dog-collar">Dog Collar</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cat Collar Color Selection -->
+            <div class="fs-field conditional-field cat-field" id="cat-color-field">
+                <label class="fs-label" for="cat-collar-color">Cat Collar Color</label>
+                <select class="fs-select" id="cat-collar-color" name="cat-collar-color">
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                </select>
+            </div>
+            
+            <!-- Dog Collar Options -->
+            <div class="fs-field conditional-field dog-field" id="dog-color-field">
+                <label class="fs-label" for="dog-collar-color">Dog Collar Color</label>
+                <select class="fs-select" id="dog-collar-color" name="dog-collar-color">
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                </select>
+            </div>
+            
+            <div class="fs-field conditional-field dog-field" id="dog-size-field">
+                <label class="fs-label" for="dog-collar-size">Dog Collar Size</label>
+                <select class="fs-select" id="dog-collar-size" name="dog-collar-size">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                    <option value="extra-large">Extra Large</option>
+                </select>
+            </div>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Additional Information</legend>
+            <div class="fs-field">
+                <label class="fs-label" for="special-instructions">Special Instructions</label>
+                <textarea
+                    class="fs-textarea"
+                    id="special-instructions"
+                    name="special-instructions"
+                    placeholder="Enter any special instructions or requests (optional)"
+                ></textarea>
+            </div>
+        </fieldset>
+        
+        <div class="fs-checkbox-field">
+            <div class="fs-checkbox-wrapper">
+                <input
+                    class="fs-checkbox"
+                    id="terms-agreement"
+                    name="terms-agreement"
+                    required
+                    type="checkbox"
+                    value="agree"
+                />
+            </div>
+            <div>
+                <label class="fs-label" for="terms-agreement">
+                    I agree to the Terms and Conditions
+                </label>
+            </div>
+        </div>
+        
+        <div class="fs-button-group">
+            <button class="fs-button" type="submit">Place Order</button>
+        </div>
+    </form>
+      <script>
+        // Show/hide fields based on collar type selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const catRadio = document.getElementById('cat-collar');
+            const dogRadio = document.getElementById('dog-collar');
+            const catFields = document.querySelectorAll('.cat-field');
+            const dogFields = document.querySelectorAll('.dog-field');
+            
+            // Function to toggle visibility
+            function updateFieldVisibility() {
+                if (catRadio.checked) {
+                    catFields.forEach(field => field.style.display = 'block');
+                    dogFields.forEach(field => field.style.display = 'none');
+                } else if (dogRadio.checked) {
+                    catFields.forEach(field => field.style.display = 'none');
+                    dogFields.forEach(field => field.style.display = 'block');
+                }
+            }
+            
+            // Set initial state
+            updateFieldVisibility();
+            
+            // Add event listeners
+            catRadio.addEventListener('change', updateFieldVisibility);
+            dogRadio.addEventListener('change', updateFieldVisibility);
+        });
+    </script>
 
 
   
