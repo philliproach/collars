@@ -8,7 +8,7 @@ Pages for the website include: <br/>
 **TO DO:**
 
 ```
-Make the website
-Get info about the website
+Update images
+Work on order page
 ```
 <br/><br/><br/>Phillip Roach
