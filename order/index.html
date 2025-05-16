@@ -3,8 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dakota's Pet Collars - Home</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Dakota's Pet Collars - Order Form</title>
+    <style>
+        :root {
+            --primary-color: #5e7e9d;
+            --secondary-color: #a9bac7;
+            --accent-color: #ffffff;
+            --dark-color: #333333;
+            --light-color: #f5f5f5;
+            --border-radius: 12px;
+        }
+        
+        @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+        
+        /** Variables **/
+        :root {
+            --color-background: #e7e7e7;
+            --color-background-alt: #bdb4fe;
+            --color-border-active: #5b26db;
+            --color-border-default: #d1d1d1;
+            --color-highlight: #bdb4fe;
+            --color-primary: #5e7e9d;
+            --color-primary-active: #401c96;
+            --color-text-default: #262626;
+            --color-text-muted: #4f4f4f;
+            --font-family-body: "Figtree", system-ui, sans-serif;
+            --font-family-display: "Poppins", system-ui, sans-serif;
+        }
+        
+        /** Base **/
+        *,
+        ::before,
+        ::after {
+            box-sizing: border-box;
+        }
+        
+        * {
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            -webkit-font-smoothing: antialiased;
+            font-family: var(--font-family-body);
+            font-optical-sizing: auto;
+            font-style: normal;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            font-family: inherit;
+            font-feature-settings: inherit;
+            font-variation-settings: inherit;
+            font-size: 100%;
+            font-weight: inherit;
+            line-height: inherit;
+            color: inherit;
+            margin: 0;
+            padding: 0;
+        }
+        
+        [type="checkbox"],
+        [type="radio"],
+        [type="range"] {
+            appearance: none;
+            flex-shrink: 0;
+            padding: 0;
+            user-select: none;
+        }
+        
+        [type="checkbox"]:focus,
+        [type="radio"]:focus,
+        [type="range"]:focus {
+            outline: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+        }
+        
+        nav ul li a:hover {
+            color: var(--dark-color);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /** Form Styles **/
+        .fs-form {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 40px;
+            max-width: 800px;
+        }
+        
+        .fs-form h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .fs-form h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        fieldset {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: var(--border-radius);
+        }
+        
+        legend {
+            padding: 0 10px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .fs-field {
+            margin-bottom: 15px;
+        }
+        
+        .fs-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .fs-input, .fs-textarea, .fs-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+        }
+        
+        .fs-textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .fs-button-group {
+            text-align: center;
+        }
+        
+        .fs-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .fs-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .conditional-field {
+            display: none;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input[type="radio"] {
+            appearance: none;
+            background-color: #fff;
+            margin: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 1px solid var(--color-border-default);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .radio-option input[type="radio"]:checked {
+            background-color: var(--primary-color);
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            border-color: transparent;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -19,166 +359,121 @@
             </nav>
         </div>
     </header>
+    
     <section class="hero" id="home">
         <div class="container">
             <h1>Order</h1>
             <p>Beautifully crafted dog and cat collars made with love in Indiana. Quality materials, stylish designs, perfect for your furry friends.</p>
         </div>
     </section>
-
-
-    <form
-        action="https://formspree.io/f/{FORM_ID}"
-        class="fs-form"
-        target="_top"
-        method="POST"
-    >
-        <h2>Pet Collar Order Form</h2>
-        
-        <fieldset>
-            <legend>Customer Information</legend>
-            <div class="fs-field">
-                <label class="fs-label" for="customer-name">Full Name</label>
-                <input
-                    class="fs-input"
-                    id="customer-name"
-                    name="customer-name"
-                    placeholder="Enter your full name"
-                    required
-                />
-            </div>
-            <div class="fs-field">
-                <label class="fs-label" for="customer-address">Address</label>
-                <textarea
-                    class="fs-textarea"
-                    id="customer-address"
-                    name="customer-address"
-                    placeholder="Enter your address"
-                    required
-                ></textarea>
-            </div>
-            <div class="fs-field">
-                <label class="fs-label" for="customer-phone">Phone Number</label>
-                <input
-                    class="fs-input"
-                    id="customer-phone"
-                    name="customer-phone"
-                    placeholder="Enter your phone number"
-                    required
-                />
-            </div>
-        </fieldset>
-        
-        <fieldset>
-            <legend>Collar Information</legend>
-            <div class="fs-field">
-                <label class="fs-label">Select Pet Type</label>
-                <div class="radio-group">
-                    <div class="radio-option">
-                        <input type="radio" id="cat-collar" name="collar-type" value="cat" required checked>
-                        <label for="cat-collar">Cat Collar</label>
-                    </div>
-                    <div class="radio-option">
-                        <input type="radio" id="dog-collar" name="collar-type" value="dog">
-                        <label for="dog-collar">Dog Collar</label>
+    
+    <div class="container">
+        <form
+            action="https://formspree.io/f/{FORM_ID}"
+            class="fs-form"
+            target="_top"
+            method="POST"
+        >
+            <h2>Pet Collar Order Form</h2>
+            
+            <fieldset>
+                <legend>Customer Information</legend>
+                <div class="fs-field">
+                    <label class="fs-label" for="customer-name">Full Name</label>
+                    <input
+                        class="fs-input"
+                        id="customer-name"
+                        name="customer-name"
+                        placeholder="Enter your full name"
+                        required
+                    />
+                </div>
+                <div class="fs-field">
+                    <label class="fs-label" for="customer-address">Address</label>
+                    <textarea
+                        class="fs-textarea"
+                        id="customer-address"
+                        name="customer-address"
+                        placeholder="Enter your address"
+                        required
+                    ></textarea>
+                </div>
+                <div class="fs-field">
+                    <label class="fs-label" for="customer-phone">Phone Number</label>
+                    <input
+                        class="fs-input"
+                        id="customer-phone"
+                        name="customer-phone"
+                        placeholder="Enter your phone number"
+                        required
+                    />
+                </div>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Collar Information</legend>
+                <div class="fs-field">
+                    <label class="fs-label">Select Pet Type</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="cat-collar" name="collar-type" value="cat" required checked>
+                            <label for="cat-collar">Cat Collar</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="dog-collar" name="collar-type" value="dog">
+                            <label for="dog-collar">Dog Collar</label>
+                        </div>
                     </div>
                 </div>
-            </div>
+                
+                <!-- Cat Collar Color Selection -->
+                <div class="fs-field conditional-field cat-field" id="cat-color-field">
+                    <label class="fs-label" for="cat-collar-color">Cat Collar Color</label>
+                    <select class="fs-select" id="cat-collar-color" name="cat-collar-color">
+                        <option value="blue">Blue</option>
+                        <option value="red">Red</option>
+                    </select>
+                </div>
+                
+                <!-- Dog Collar Options -->
+                <div class="fs-field conditional-field dog-field" id="dog-color-field">
+                    <label class="fs-label" for="dog-collar-color">Dog Collar Color</label>
+                    <select class="fs-select" id="dog-collar-color" name="dog-collar-color">
+                        <option value="blue">Blue</option>
+                        <option value="red">Red</option>
+                    </select>
+                </div>
+                
+                <div class="fs-field conditional-field dog-field" id="dog-size-field">
+                    <label class="fs-label" for="dog-collar-size">Dog Collar Size</label>
+                    <select class="fs-select" id="dog-collar-size" name="dog-collar-size">
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                        <option value="extra-large">Extra Large</option>
+                    </select>
+                </div>
+            </fieldset>
             
-            <!-- Cat Collar Color Selection -->
-            <div class="fs-field conditional-field cat-field" id="cat-color-field">
-                <label class="fs-label" for="cat-collar-color">Cat Collar Color</label>
-                <select class="fs-select" id="cat-collar-color" name="cat-collar-color">
-                    <option value="blue">Blue</option>
-                    <option value="red">Red</option>
-                </select>
-            </div>
+            <fieldset>
+                <legend>Additional Information</legend>
+                <div class="fs-field">
+                    <label class="fs-label" for="special-instructions">Special Instructions</label>
+                    <textarea
+                        class="fs-textarea"
+                        id="special-instructions"
+                        name="special-instructions"
+                        placeholder="Enter any special instructions or requests (optional)"
+                    ></textarea>
+                </div>
+            </fieldset>
             
-            <!-- Dog Collar Options -->
-            <div class="fs-field conditional-field dog-field" id="dog-color-field">
-                <label class="fs-label" for="dog-collar-color">Dog Collar Color</label>
-                <select class="fs-select" id="dog-collar-color" name="dog-collar-color">
-                    <option value="blue">Blue</option>
-                    <option value="red">Red</option>
-                </select>
+            <div class="fs-button-group">
+                <button class="fs-button" type="submit">Place Order</button>
             </div>
-            
-            <div class="fs-field conditional-field dog-field" id="dog-size-field">
-                <label class="fs-label" for="dog-collar-size">Dog Collar Size</label>
-                <select class="fs-select" id="dog-collar-size" name="dog-collar-size">
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="large">Large</option>
-                    <option value="extra-large">Extra Large</option>
-                </select>
-            </div>
-        </fieldset>
-        
-        <fieldset>
-            <legend>Additional Information</legend>
-            <div class="fs-field">
-                <label class="fs-label" for="special-instructions">Special Instructions</label>
-                <textarea
-                    class="fs-textarea"
-                    id="special-instructions"
-                    name="special-instructions"
-                    placeholder="Enter any special instructions or requests (optional)"
-                ></textarea>
-            </div>
-        </fieldset>
-        
-        <div class="fs-checkbox-field">
-            <div class="fs-checkbox-wrapper">
-                <input
-                    class="fs-checkbox"
-                    id="terms-agreement"
-                    name="terms-agreement"
-                    required
-                    type="checkbox"
-                    value="agree"
-                />
-            </div>
-            <div>
-                <label class="fs-label" for="terms-agreement">
-                    I agree to the Terms and Conditions
-                </label>
-            </div>
-        </div>
-        
-        <div class="fs-button-group">
-            <button class="fs-button" type="submit">Place Order</button>
-        </div>
-    </form>
-      <script>
-        // Show/hide fields based on collar type selection
-        document.addEventListener('DOMContentLoaded', function() {
-            const catRadio = document.getElementById('cat-collar');
-            const dogRadio = document.getElementById('dog-collar');
-            const catFields = document.querySelectorAll('.cat-field');
-            const dogFields = document.querySelectorAll('.dog-field');
-            
-            // Function to toggle visibility
-            function updateFieldVisibility() {
-                if (catRadio.checked) {
-                    catFields.forEach(field => field.style.display = 'block');
-                    dogFields.forEach(field => field.style.display = 'none');
-                } else if (dogRadio.checked) {
-                    catFields.forEach(field => field.style.display = 'none');
-                    dogFields.forEach(field => field.style.display = 'block');
-                }
-            }
-            
-            // Set initial state
-            updateFieldVisibility();
-            
-            // Add event listeners
-            catRadio.addEventListener('change', updateFieldVisibility);
-            dogRadio.addEventListener('change', updateFieldVisibility);
-        });
-    </script>
-
-
-  
+        </form>
+    </div>
+    
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -209,13 +504,33 @@
             </div>
         </div>
     </footer>
-    <div class="modal" id="productModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 id="modalTitle">Product Title</h2>
-            <div id="modalContent"></div>
-        </div>
-    </div>
-    <script src="script.js"></script>
+
+    <script>
+        // Show/hide fields based on collar type selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const catRadio = document.getElementById('cat-collar');
+            const dogRadio = document.getElementById('dog-collar');
+            const catFields = document.querySelectorAll('.cat-field');
+            const dogFields = document.querySelectorAll('.dog-field');
+            
+            // Function to toggle visibility
+            function updateFieldVisibility() {
+                if (catRadio.checked) {
+                    catFields.forEach(field => field.style.display = 'block');
+                    dogFields.forEach(field => field.style.display = 'none');
+                } else if (dogRadio.checked) {
+                    catFields.forEach(field => field.style.display = 'none');
+                    dogFields.forEach(field => field.style.display = 'block');
+                }
+            }
+            
+            // Set initial state
+            updateFieldVisibility();
+            
+            // Add event listeners
+            catRadio.addEventListener('change', updateFieldVisibility);
+            dogRadio.addEventListener('change', updateFieldVisibility);
+        });
+    </script>
 </body>
 </html>
