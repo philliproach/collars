@@ -368,6 +368,7 @@
             class="fs-form"
             target="_top"
             method="POST"
+            id="pet-collar-form"
         >
             <h2>Pet Collar Order Form</h2>
             <fieldset>
@@ -421,20 +422,23 @@
                 <div class="fs-field conditional-field cat-field" id="cat-color-field">
                     <label class="fs-label" for="cat-collar-color">Cat Collar Color</label>
                     <select class="fs-select" id="cat-collar-color" name="cat-collar-color">
+                        <option value="">-- Select Color --</option>
                         <option value="blue">Blue</option>
                         <option value="red">Red</option>
                     </select>
                 </div>
                 <div class="fs-field conditional-field dog-field" id="dog-color-field">
                     <label class="fs-label" for="dog-collar-color">Dog Collar Color</label>
-                    <select class="fs-select" id="dog-collar-color" name="dog-collar-color">
+                    <select class="fs-select" id="dog-collar-color" name="dog-collar-color" disabled>
+                        <option value="">-- Select Color --</option>
                         <option value="blue">Blue</option>
                         <option value="red">Red</option>
                     </select>
                 </div>
                 <div class="fs-field conditional-field dog-field" id="dog-size-field">
                     <label class="fs-label" for="dog-collar-size">Dog Collar Size</label>
-                    <select class="fs-select" id="dog-collar-size" name="dog-collar-size">
+                    <select class="fs-select" id="dog-collar-size" name="dog-collar-size" disabled>
+                        <option value="">-- Select Size --</option>
                         <option value="small">Small</option>
                         <option value="medium">Medium</option>
                         <option value="large">Large</option>
@@ -445,7 +449,7 @@
             <fieldset>
                 <legend>Additional Information / custom orders</legend>
                 <div class="fs-field">
-                    <label class="fs-label" for="special-instructions">Special Instructions / custom order</label>
+                    <label class="fs-label" for="special-instructions">Special Instructions</label>
                     <textarea
                         class="fs-textarea"
                         id="special-instructions"
@@ -496,14 +500,61 @@
             const dogRadio = document.getElementById('dog-collar');
             const catFields = document.querySelectorAll('.cat-field');
             const dogFields = document.querySelectorAll('.dog-field');
+            const catCollarColor = document.getElementById('cat-collar-color');
+            const dogCollarColor = document.getElementById('dog-collar-color');
+            const dogCollarSize = document.getElementById('dog-collar-size');
+            
+            document.getElementById('pet-collar-form').addEventListener('submit', function(event) {
+                if (catRadio.checked && !catCollarColor.value) {
+                    alert('Please select a cat collar color.');
+                    event.preventDefault();
+                    return false;
+                }
+                
+                if (dogRadio.checked && (!dogCollarColor.value || !dogCollarSize.value)) {
+                    alert('Please select both dog collar color and size.');
+                    event.preventDefault();
+                    return false;
+                }
+                
+                return true;
+            });
             
             function updateFieldVisibility() {
                 if (catRadio.checked) {
-                    catFields.forEach(field => field.style.display = 'block');
-                    dogFields.forEach(field => field.style.display = 'none');
+                    catFields.forEach(field => {
+                        field.style.display = 'block';
+                        field.querySelectorAll('select, input, textarea').forEach(input => {
+                            input.disabled = false;
+                            input.required = true;
+                        });
+                    });
+                    
+                    dogFields.forEach(field => {
+                        field.style.display = 'none';
+                        field.querySelectorAll('select, input, textarea').forEach(input => {
+                            input.disabled = true;
+                            input.required = false;
+                            input.value = '';
+                        });
+                    });
                 } else if (dogRadio.checked) {
-                    catFields.forEach(field => field.style.display = 'none');
-                    dogFields.forEach(field => field.style.display = 'block');
+                    catFields.forEach(field => {
+                        field.style.display = 'none';
+                        field.querySelectorAll('select, input, textarea').forEach(input => {
+                            input.disabled = true;
+                            input.required = false;
+                            input.value = '';
+                        });
+                    });
+                    
+                    dogFields.forEach(field => {
+                        field.style.display = 'block';
+                        field.querySelectorAll('select, input, textarea').forEach(input => {
+                            input.disabled = false;
+                            input.required = true;
+                        });
+                    });
                 }
             }
             
