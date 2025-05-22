@@ -363,45 +363,21 @@
         </div>
     </section>
     <div class="container">
-        <form
-            action="https://formspree.io/f/meoarvaq"
-            class="fs-form"
-            target="_top"
-            method="POST"
-            id="pet-collar-form"
-        >
+        <form action="https://formspree.io/f/meoarvaq" class="fs-form" target="_top" method="POST" id="pet-collar-form">
             <h2>Pet Collar Order Form</h2>
             <fieldset>
                 <legend>Customer Information</legend>
                 <div class="fs-field">
                     <label class="fs-label" for="customer-name">Full Name</label>
-                    <input
-                        class="fs-input"
-                        id="customer-name"
-                        name="customer-name"
-                        placeholder="Enter your full name"
-                        required
-                    />
+                    <input class="fs-input" id="customer-name" name="customer-name" placeholder="Enter your full name" required />
                 </div>
                 <div class="fs-field">
                     <label class="fs-label" for="customer-address">Address</label>
-                    <textarea
-                        class="fs-textarea"
-                        id="customer-address"
-                        name="customer-address"
-                        placeholder="Enter your address"
-                        required
-                    ></textarea>
+                    <textarea class="fs-textarea" id="customer-address" name="customer-address" placeholder="Enter your address" required></textarea>
                 </div>
                 <div class="fs-field">
                     <label class="fs-label" for="customer-phone">Phone Number</label>
-                    <input
-                        class="fs-input"
-                        id="customer-phone"
-                        name="customer-phone"
-                        placeholder="Enter your phone number"
-                        required
-                    />
+                    <input class="fs-input" id="customer-phone" name="customer-phone" placeholder="Enter your phone number" required />
                 </div>
             </fieldset>
             <fieldset>
@@ -422,7 +398,7 @@
                 <div class="fs-field conditional-field cat-field" id="cat-color-field">
                     <label class="fs-label" for="cat-collar-color">Color</label>
                     <select class="fs-select" id="cat-collar-color" name="cat-collar-color">
-                        <option value="">-- Select Color --</option>
+                        <option value="">-- Select Material Color --</option>
                         <option value="blue">Blue</option>
                         <option value="red">Red</option>
                         <option value="other">Other</option>
@@ -431,7 +407,7 @@
                 <div class="fs-field conditional-field dog-field" id="dog-color-field">
                     <label class="fs-label" for="dog-collar-color">Color</label>
                     <select class="fs-select" id="dog-collar-color" name="dog-collar-color" disabled>
-                        <option value="">-- Select Color --</option>
+                        <option value="">-- Select Material Color --</option>
                         <option value="blue">Blue</option>
                         <option value="red">Red</option>
                         <option value="other">Other</option>
@@ -447,17 +423,23 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
+                <div class="fs-field">
+                    <label class="fs-label" for="chicago-screw-color">Chicago Screw Color</label>
+                    <select class="fs-select" id="chicago-screw-color" name="chicago-screw-color" required>
+                        <option value="">-- Select Chicago Screw Color --</option>
+                        <option value="gun-metal">Gun Metal</option>
+                        <option value="silver">Silver</option>
+                        <option value="rose-gold">Rose Gold</option>
+                        <option value="gold">Gold</option>
+                        <option value="antique-gold">Antique Gold</option>
+                    </select>
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Additional Information</legend>
                 <div class="fs-field">
                     <label class="fs-label" for="special-instructions">Special Instructions / custom order</label>
-                    <textarea
-                        class="fs-textarea"
-                        id="special-instructions"
-                        name="special-instructions"
-                        placeholder="Enter any special instructions or requests (optional)"
-                    ></textarea>
+                    <textarea class="fs-textarea" id="special-instructions" name="special-instructions" placeholder="Enter any special instructions or requests"></textarea>
                 </div>
             </fieldset>
             <div class="fs-button-group">
@@ -475,9 +457,9 @@
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                    <li><a href="../">Home</a></li>
-                    <li><a href="../gallery">Gallery</a></li>
-                    <li><a href="">Order</a></li>
+                        <li><a href="../">Home</a></li>
+                        <li><a href="../gallery">Gallery</a></li>
+                        <li><a href="">Order</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -495,7 +477,6 @@
             </div>
         </div>
     </footer>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const catRadio = document.getElementById('cat-collar');
@@ -505,23 +486,25 @@
             const catCollarColor = document.getElementById('cat-collar-color');
             const dogCollarColor = document.getElementById('dog-collar-color');
             const dogCollarSize = document.getElementById('dog-collar-size');
-            
+            const chicagoScrewColor = document.getElementById('chicago-screw-color');
             document.getElementById('pet-collar-form').addEventListener('submit', function(event) {
+                if (!chicagoScrewColor.value) {
+                    alert('Please select a Chicago screw color.');
+                    event.preventDefault();
+                    return false;
+                }
                 if (catRadio.checked && !catCollarColor.value) {
                     alert('Please select a cat collar color.');
                     event.preventDefault();
                     return false;
                 }
-                
                 if (dogRadio.checked && (!dogCollarColor.value || !dogCollarSize.value)) {
                     alert('Please select both dog collar color and size.');
                     event.preventDefault();
                     return false;
                 }
-                
                 return true;
             });
-            
             function updateFieldVisibility() {
                 if (catRadio.checked) {
                     catFields.forEach(field => {
@@ -531,7 +514,6 @@
                             input.required = true;
                         });
                     });
-                    
                     dogFields.forEach(field => {
                         field.style.display = 'none';
                         field.querySelectorAll('select, input, textarea').forEach(input => {
@@ -549,7 +531,6 @@
                             input.value = '';
                         });
                     });
-                    
                     dogFields.forEach(field => {
                         field.style.display = 'block';
                         field.querySelectorAll('select, input, textarea').forEach(input => {
@@ -559,9 +540,7 @@
                     });
                 }
             }
-            
             updateFieldVisibility();
-            
             catRadio.addEventListener('change', updateFieldVisibility);
             dogRadio.addEventListener('change', updateFieldVisibility);
         });
