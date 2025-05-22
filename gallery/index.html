@@ -121,33 +121,41 @@
             </div>
         </div>
     </footer>
-    <script>
+        <script>
     document.addEventListener('DOMContentLoaded', function() {
-    const filters = document.querySelectorAll('.gallery-filter');
-    const items = document.querySelectorAll('.gallery-item');
-    
-    filters.forEach(filter => {
-        filter.addEventListener('click', function() {
-            filters.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            const category = this.getAttribute('data-filter');
-            
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
+        const filters = document.querySelectorAll('.gallery-filter');
+        const items = document.querySelectorAll('.gallery-item');
+        
+        filters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                filters.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-filter');
+                
+                items.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    
+                    if (category === 'all' || itemCategory === category) {
+                        item.classList.remove('hidden');
+                        item.style.display = 'block';
                         item.style.opacity = '1';
-                    }, 50);
-                } else {
-                    item.style.opacity = '0';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                            item.classList.add('hidden');
+                        }, 300);
+                    }
+                });
             });
         });
+        
+        items.forEach(item => {
+            item.style.display = 'block';
+            item.style.opacity = '1';
+        });
     });
-</script>
+    </script>
 </body>
 </html>
